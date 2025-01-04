@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Travelio App</string>
+
+    <string name="nameApp">Travelio App</string>
+    <string name="subtitleNameApp">Ur Best Tour App</string>
+    <string name="versionApp">v1</string>
+    <string name="titleLogin">Welcome to Travelio</string>
+
+    <string name="channel_name">Travelio App v1</string>
+    <string name="channel_desc">Application Travel Indonesia</string>
+</resources>
