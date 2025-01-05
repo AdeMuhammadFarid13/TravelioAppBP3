@@ -13,11 +13,13 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class EditUser extends AppCompatActivity {
+    // Deklarasi input layout dan tombol
     TextInputLayout inpName, inpEmail, inpPhone, inpUser, inpPass, inpRePass;
     Button btnUpdate, btnReset;
 
     SharedPreferences preferences;
 
+    // Kunci SharedPreferences untuk menyimpan data pengguna
     private static final String KEY_NAME = "name";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_PHONE = "phone";
@@ -30,6 +32,7 @@ public class EditUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user);
 
+        // Inisialisasi elemen UI
         inpName = findViewById(R.id.name_edit);
         inpEmail = findViewById(R.id.email_edit);
         inpPhone = findViewById(R.id.phone_edit);
@@ -40,8 +43,10 @@ public class EditUser extends AppCompatActivity {
         btnUpdate = findViewById(R.id.btn_update);
         btnReset = findViewById(R.id.btn_reset);
 
+        // Mengambil data pengguna yang tersimpan di SharedPreferences
         preferences = getSharedPreferences("userInfo", 0);
 
+        // Mengisi field dengan data yang sudah ada
         String nameView = preferences.getString(KEY_NAME, null);
         String emailView = preferences.getString(KEY_EMAIL, null);
         String phoneView = preferences.getString(KEY_PHONE, null);
@@ -49,6 +54,7 @@ public class EditUser extends AppCompatActivity {
         String passView = preferences.getString(KEY_PASS, null);
         String repassView = preferences.getString(KEY_REPASS, null);
 
+        // Jika data ada, set ke input field
         if (nameView != null || emailView != null || phoneView != null || userView != null || passView != null || repassView != null){
             inpName.getEditText().setText(nameView);
             inpEmail.getEditText().setText(emailView);
@@ -58,9 +64,11 @@ public class EditUser extends AppCompatActivity {
             inpRePass.getEditText().setText(repassView);
         }
 
+        // Listener untuk tombol Update (perbarui data pengguna)
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Mengambil nilai input
                 String nameValue = inpName.getEditText().getText().toString();
                 String emailValue = inpEmail.getEditText().getText().toString();
                 String phoneValue = inpPhone.getEditText().getText().toString();
@@ -68,26 +76,25 @@ public class EditUser extends AppCompatActivity {
                 String passValue = inpPass.getEditText().getText().toString();
                 String repassValue = inpRePass.getEditText().getText().toString();
 
+                // Mengecek apakah password dan re-password cocok
                 if (passValue.equals(repassValue)){
+                    // Menyimpan data yang diperbarui ke SharedPreferences
                     SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString(KEY_NAME, inpName.getEditText().getText().toString());
-                    editor.putString(KEY_EMAIL, inpEmail.getEditText().getText().toString());
-                    editor.putString(KEY_PHONE, inpPhone.getEditText().getText().toString());
-                    editor.putString(KEY_USER, inpUser.getEditText().getText().toString());
-                    editor.putString(KEY_PASS, inpPass.getEditText().getText().toString());
-                    editor.putString(KEY_REPASS, inpRePass.getEditText().getText().toString());
-                    editor.putString("Authentication_Status","true");
+                    editor.putString(KEY_NAME, nameValue);
+                    editor.putString(KEY_EMAIL, emailValue);
+                    editor.putString(KEY_PHONE, phoneValue);
+                    editor.putString(KEY_USER, userValue);
+                    editor.putString(KEY_PASS, passValue);
+                    editor.putString(KEY_REPASS, repassValue);
+                    editor.putString("Authentication_Status","true");  // Menandai status autentikasi
                     editor.apply();
 
-                    try{
-                        if (nameValue.equals("") ||
-                                emailValue.equals("") ||
-                                phoneValue.equals("") ||
-                                userValue.equals("") ||
-                                passValue.equals("") ||
-                                repassValue.equals("")){
+                    try {
+                        // Jika ada input yang kosong, beri peringatan
+                        if (nameValue.equals("") || emailValue.equals("") || phoneValue.equals("") || userValue.equals("") || passValue.equals("") || repassValue.equals("")){
                             Toast.makeText(EditUser.this, "Data Cannot be Empty. \nData can be Exhausted.", Toast.LENGTH_LONG).show();
-                        }else{
+                        } else {
+                            // Jika data valid, tampilkan pesan sukses dan kembali ke halaman login
                             String name = preferences.getString(KEY_NAME, null);
                             if (name != null){
                                 Toast.makeText(EditUser.this, "Successful Registration", Toast.LENGTH_LONG).show();
@@ -96,15 +103,18 @@ public class EditUser extends AppCompatActivity {
                                 finish();
                             }
                         }
-                    }catch (Exception e){
+                    } catch (Exception e){
+                        // Menangani kesalahan jika username sudah digunakan
                         Toast.makeText(EditUser.this, "Username has been used", Toast.LENGTH_LONG).show();
                     }
-                }else{
+                } else {
+                    // Jika password dan re-password tidak cocok
                     Toast.makeText(EditUser.this, "Password doesn't match", Toast.LENGTH_LONG).show();
                 }
             }
         });
 
+        // Listener untuk tombol Reset (reset semua input)
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,7 +123,7 @@ public class EditUser extends AppCompatActivity {
         });
     }
 
-
+    // Fungsi untuk mereset semua input
     public void reset(){
         inpName.getEditText().setText(null);
         inpEmail.getEditText().setText(null);

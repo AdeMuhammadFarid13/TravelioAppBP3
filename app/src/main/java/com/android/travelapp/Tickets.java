@@ -9,20 +9,17 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
-import java.util.ArrayList;
-
 public class Tickets extends AppCompatActivity {
+    // Deklarasi elemen UI untuk menampilkan informasi tiket
     TextView name, email, phone, nameTour, totalPeople, totalPrice;
     Button btnBack;
     AlertDialog dialog;
 
     SharedPreferences preferences;
 
+    // Kunci untuk menyimpan dan mengambil data dari SharedPreferences
     private static final String KEY_NAME = "name";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_PHONE = "phone";
@@ -35,6 +32,7 @@ public class Tickets extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tickets);
 
+        // Inisialisasi elemen UI
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
         phone = findViewById(R.id.phone);
@@ -43,17 +41,21 @@ public class Tickets extends AppCompatActivity {
         totalPrice = findViewById(R.id.total_price);
         btnBack = findViewById(R.id.btn_back);
 
+        // Mendapatkan SharedPreferences untuk menyimpan dan mengambil data pengguna
         preferences = getSharedPreferences("userInfo", 0);
 
+        // Menambahkan listener untuk tombol "Back" yang akan kembali ke Dashboard
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Membuka Dashboard Activity
                 Intent intent = new Intent(Tickets.this, Dashboard.class);
                 startActivity(intent);
                 finish();
             }
         });
 
+        // Mengambil data dari SharedPreferences
         String nameView = preferences.getString(KEY_NAME, null);
         String emailView = preferences.getString(KEY_EMAIL, null);
         String phoneView = preferences.getString(KEY_PHONE, null);
@@ -62,7 +64,9 @@ public class Tickets extends AppCompatActivity {
         String totalItemsView = preferences.getString(KEY_COUNT_ITEMS, null);
         String totalPriceView = preferences.getString(KEY_TOTAL_PRICE, null);
 
+        // Memeriksa apakah data tersedia
         if (nameView != null || emailView != null || phoneView != null || nameTourView != null || totalItemsView != null || totalPriceView != null) {
+            // Menampilkan data pengguna dan informasi tiket ke dalam UI
             name.setText(nameView);
             email.setText(emailView);
             phone.setText(phoneView);
@@ -70,6 +74,7 @@ public class Tickets extends AppCompatActivity {
             totalPeople.setText(totalItemsView + " Orang");
             totalPrice.setText("Rp" + totalPriceView);
         } else {
+            // Menampilkan dialog jika data tidak ada
             dialog = new AlertDialog.Builder(Tickets.this)
                     .setTitle("Check Tickets")
                     .setMessage("Data is Empty")
@@ -77,6 +82,7 @@ public class Tickets extends AppCompatActivity {
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
+                            // Jika data kosong, kembali ke Dashboard
                             Intent intent = new Intent(Tickets.this, Dashboard.class);
                             startActivity(intent);
                             finish();
