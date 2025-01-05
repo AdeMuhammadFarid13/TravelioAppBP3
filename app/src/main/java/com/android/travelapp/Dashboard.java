@@ -23,20 +23,24 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class Dashboard extends AppCompatActivity {
+    // Mendeklarasikan variabel untuk elemen UI dan penyimpanan data
     TextView txtNama, txtEmail;
     Button checkTickets;
 
-    AlertDialog alertDialog;
-    MenuInflater inflater;
+    AlertDialog alertDialog;  // Untuk menampilkan alert
+    MenuInflater inflater;    // Untuk membuat menu jika diperlukan
 
+    // Array untuk menyimpan informasi mengenai tur
     private ArrayList<String> al_img_tour = new ArrayList<>();
     private ArrayList<String> al_name_tour = new ArrayList<>();
     private ArrayList<String> al_desc_tour = new ArrayList<>();
     private ArrayList<Integer> al_price_tour = new ArrayList<>();
     private ArrayList<String> al_location = new ArrayList<>();
 
+    // SharedPreferences untuk menyimpan dan mengambil data pengguna
     SharedPreferences preferences;
 
+    // Kunci untuk SharedPreferences yang digunakan untuk menyimpan data
     private static final String KEY_NAME = "name";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_PHONE = "phone";
@@ -44,20 +48,23 @@ public class Dashboard extends AppCompatActivity {
     private static final String KEY_NAME_TOUR = "name_tour";
     private static final String KEY_COUNT_ITEMS = "count_items";
 
-    private Toolbar toolbar;
+    private Toolbar toolbar;  // Toolbar yang akan digunakan dalam aplikasi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        txtNama = findViewById(R.id.tv_fullname);
-        txtEmail = findViewById(R.id.tv_email);
-        checkTickets = findViewById(R.id.check_ticket);
+        // Menginisialisasi elemen UI
+        txtNama = findViewById(R.id.tv_fullname);  // Nama pengguna
+        txtEmail = findViewById(R.id.tv_email);    // Email pengguna
+        checkTickets = findViewById(R.id.check_ticket);  // Tombol untuk memeriksa tiket
 
+        // Menetapkan listener untuk tombol "Check Tickets"
         checkTickets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Mengambil data pengguna yang tersimpan dari SharedPreferences
                 String nameView = preferences.getString(KEY_NAME, null);
                 String emailView = preferences.getString(KEY_EMAIL, null);
                 String phoneView = preferences.getString(KEY_PHONE, null);
@@ -66,42 +73,52 @@ public class Dashboard extends AppCompatActivity {
                 String totalItemsView = preferences.getString(KEY_COUNT_ITEMS, null);
                 String totalPriceView = preferences.getString(KEY_TOTAL_PRICE, null);
 
+                // Mengecek jika ada data yang hilang
                 if (nameView == "" || emailView == "" || phoneView == "" || nameTourView == "" || totalItemsView == "" || totalPriceView == "" ||
                         nameView == null || emailView == null || phoneView == null || nameTourView == null || totalItemsView == null || totalPriceView == null) {
+                    // Jika ada data yang hilang, tampilkan dialog alert
                     AlertDialog dialog = new AlertDialog.Builder(Dashboard.this)
                             .setTitle("Check Tickets")
-                            .setMessage("\nData is Empty")
-                            .setIcon(android.R.drawable.ic_dialog_info)
+                            .setMessage("\nData is Empty")  // Pesan di dalam dialog
+                            .setIcon(android.R.drawable.ic_dialog_info)  // Ikon untuk alert
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
+                                    // Tutup aktivitas saat ini dan mulai ulang aktivitas Dashboard
                                     Intent intent = new Intent(Dashboard.this, Dashboard.class);
                                     startActivity(intent);
                                     finish();
                                 }
                             }).show();
-                }else if (nameView == nameView || emailView == emailView || phoneView == phoneView || nameTourView == nameTourView || totalItemsView == totalItemsView || totalPriceView == totalPriceView){
+                } else if (nameView == nameView || emailView == emailView || phoneView == phoneView || nameTourView == nameTourView || totalItemsView == totalItemsView || totalPriceView == totalPriceView) {
+                    // Jika data lengkap, alihkan ke aktivitas Tickets
                     Intent intent = new Intent(Dashboard.this, Tickets.class);
                     startActivity(intent);
                 }
             }
         });
 
+        // Menginisialisasi SharedPreferences untuk mengambil data pengguna
         preferences = getSharedPreferences("userInfo", 0);
 
+        // Mengambil data nama dan email pengguna dari SharedPreferences
         String namaView = preferences.getString(KEY_NAME, null);
         String emailView = preferences.getString(KEY_EMAIL, null);
 
-        if (namaView != null || emailView != null){
+        // Jika data nama dan email ada, tampilkan pada UI
+        if (namaView != null || emailView != null) {
             txtNama.setText(namaView);
             txtEmail.setText(emailView);
         }
 
+        // Memanggil method untuk mendapatkan data
         getData();
 
+        // Menginisialisasi toolbar dan mengatur toolbar sebagai action bar
         toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
     }
+
 
     private void getData() {
         //Pantai Pandawa
@@ -112,7 +129,7 @@ public class Dashboard extends AppCompatActivity {
         al_location.add("Pantai Pandawa, Bali");
 
         //Pantai Kuta
-        al_img_tour.add("https://www.rentalmobilbali.net/wp-content/uploads/2016/05/Objek-Wisata-Kuta-Bali.jpg");
+        al_img_tour.add("https://th.bing.com/th/id/OIP.286SjggiH_IRc3IH4tenEQHaEy?rs=1&pid=ImgDetMain");
         al_name_tour.add("Pantai Kuta");
         al_desc_tour.add("Pantai Kuta terletak di kelurahan Kuta, Kabupaten Badung, menjadi objek wisata alam pantai yang paling menarik dan indah di pulau Dewata Bali, tempat rekreasi alam pesisir ini melengkapi destinasi tour populer di kawasan pariwisata Bali Selatan yang memang populer dengan wilayah pesisir yang memiliki pasir putih.");
         al_price_tour.add(5000);
@@ -250,45 +267,54 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void RecycleViewAdapterProcess() {
+        // Mengambil RecyclerView berdasarkan ID-nya
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
+
+        // Membuat adapter untuk RecyclerView dan mengirimkan data (gambar, nama, deskripsi, harga, lokasi)
         RecycleViewAdapter adapter = new RecycleViewAdapter(al_img_tour, al_name_tour, al_desc_tour, al_price_tour, al_location, this);
 
+        // Menetapkan adapter pada RecyclerView
         recyclerView.setAdapter(adapter);
+
+        // Menetapkan LayoutManager untuk RecyclerView (LinearLayout untuk scrolling vertikal)
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // Menginflasi menu dari XML ke dalam menu yang disediakan
         super.onCreateOptionsMenu(menu);
         inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
+        inflater.inflate(R.menu.main_menu, menu); // Mengisi menu dengan item dari main_menu.xml
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        // Menangani pemilihan item dari menu
+        switch (item.getItemId()) {
             case R.id.bar_call_center:
-                callCenter();
+                callCenter(); // Memanggil metode callCenter() jika item call center dipilih
                 return true;
             case R.id.bar_email:
-                emailCenter();
+                emailCenter(); // Memanggil metode emailCenter() jika item email dipilih
                 return true;
             case R.id.bar_loc:
-                getLoc();
+                getLoc(); // Memanggil metode getLoc() jika item lokasi dipilih
                 return true;
             case R.id.bar_edit_user:
-                editUser();
+                editUser(); // Memanggil metode editUser() jika item edit user dipilih
                 return true;
             case R.id.bar_logout:
-                getLogout();
+                getLogout(); // Memanggil metode getLogout() jika item logout dipilih
                 return true;
             default:
-                return super.onOptionsItemSelected(item);
+                return super.onOptionsItemSelected(item); // Menangani item lainnya
         }
     }
 
     private void callCenter() {
+        // Membuat dialog untuk menampilkan nomor call center dan menambahkan opsi untuk menelepon
         alertDialog = new AlertDialog.Builder(Dashboard.this)
                 .setIcon(android.R.drawable.ic_dialog_dialer)
                 .setTitle("Call Center")
@@ -296,19 +322,21 @@ public class Dashboard extends AppCompatActivity {
                 .setNeutralButton("Call", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        // Membuka aplikasi telepon dan memulai panggilan ke nomor yang disediakan
                         Uri uri = Uri.parse("081461152511");
                         Intent intent = new Intent(Intent.ACTION_DIAL, uri);
                         intent.setData(Uri.fromParts("tel", String.valueOf(uri), null));
 
-                        if (intent.resolveActivity(getPackageManager()) != null){
+                        if (intent.resolveActivity(getPackageManager()) != null) {
                             startActivity(intent);
                         }
                     }
                 })
                 .show();
-
     }
-    private void emailCenter(){
+
+    private void emailCenter() {
+        // Membuat dialog untuk menampilkan alamat email dan menambahkan opsi untuk membuka aplikasi email
         alertDialog = new AlertDialog.Builder(Dashboard.this)
                 .setIcon(android.R.drawable.ic_dialog_email)
                 .setTitle("Email")
@@ -316,18 +344,20 @@ public class Dashboard extends AppCompatActivity {
                 .setNeutralButton("Go to Email", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent = new Intent(Intent.ACTION_SEND );
+                        // Membuka aplikasi email dan memulai pengiriman email ke alamat yang disediakan
+                        Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"ademuhammadfarid130704@gmail.com"});
-                        intent.putExtra(Intent.EXTRA_SUBJECT , ":)");
-                        intent.putExtra(Intent.EXTRA_TEXT , "Travelio App");
+                        intent.putExtra(Intent.EXTRA_SUBJECT, ":)");
+                        intent.putExtra(Intent.EXTRA_TEXT, "Travelio App");
                         intent.setType("message/rfc822");
-                        startActivity(Intent.createChooser(intent , "Choose Your Apps : "));
+                        startActivity(Intent.createChooser(intent, "Choose Your Apps : "));
                     }
                 })
                 .show();
-
     }
-    private void getLoc(){
+
+    private void getLoc() {
+        // Membuat dialog untuk menampilkan lokasi dan menambahkan opsi untuk membuka aplikasi peta
         alertDialog = new AlertDialog.Builder(Dashboard.this)
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .setTitle("Location")
@@ -335,27 +365,29 @@ public class Dashboard extends AppCompatActivity {
                 .setNeutralButton("Go to Location", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Uri uri2 = Uri.parse("geo:0,0?q="+"Kota Kuningan, Jawa Barat");
+                        // Membuka aplikasi peta dan mencari lokasi yang disediakan di Google Maps
+                        Uri uri2 = Uri.parse("geo:0,0?q=" + "Kota Kuningan, Jawa Barat");
                         Intent mapIntent = new Intent(Intent.ACTION_VIEW, uri2);
                         mapIntent.setPackage("com.google.android.apps.maps");
 
-                        if(mapIntent.resolveActivity(getPackageManager()) != null){
+                        if (mapIntent.resolveActivity(getPackageManager()) != null) {
                             startActivity(mapIntent);
                         }
                     }
                 })
                 .show();
-
     }
-    private void editUser(){
+
+    private void editUser() {
+        // Membuka Activity EditUser untuk mengubah informasi pengguna
         Intent intent = new Intent(Dashboard.this, EditUser.class);
         startActivity(intent);
-
     }
-    private void getLogout(){
+
+    private void getLogout() {
+        // Membuka Activity LoginPage untuk logout dan mengarahkan pengguna ke halaman login
         Intent intent = new Intent(Dashboard.this, LoginPage.class);
         startActivity(intent);
-        finish();
+        finish(); // Menutup Activity Dashboard agar pengguna tidak dapat kembali setelah logout
     }
-
 }

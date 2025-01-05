@@ -33,7 +33,7 @@ public class Receipt extends AppCompatActivity {
     SharedPreferences preferences;
 
     // ID untuk channel notifikasi
-    String CHANNEL_ID = "Travel App v2.6 (BETA)";
+    String CHANNEL_ID = "Travel App v1";
 
     // Kunci untuk SharedPreferences
     private static final String KEY_NAME = "name";
