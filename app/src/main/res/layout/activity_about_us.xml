@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="40dp">
 
         <!-- Logo atau Gambar -->
         <ImageView
@@ -17,7 +18,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/ic_abtus"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="24dp" />
 
         <!-- Judul -->
         <TextView
@@ -30,7 +31,16 @@
             android:textStyle="bold"
             android:gravity="center"
             android:textColor="#333"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="24dp" />
+
+        <!-- Kotak Berwarna Kuning untuk Deskripsi dan Info Tim -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFEB3B"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
 
         <!-- Deskripsi -->
         <TextView
@@ -40,9 +50,12 @@
             android:fontFamily="@font/cheapsman_regular"
             android:text="Travelio adalah aplikasi yang dirancang untuk membantu Anda menemukan tempat wisata terbaik, hotel terdekat, dan berbagai aktivitas menarik. Kami berkomitmen untuk memberikan pengalaman wisata yang mudah, cepat, dan menyenangkan bagi semua pengguna."
             android:textSize="18sp"
-            android:lineSpacingExtra="4dp"
+            android:lineSpacingExtra="6dp"
             android:textColor="#555"
-            android:layout_marginBottom="24dp" />
+            android:gravity="start"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:layout_marginBottom="16dp" />
 
         <!-- Info Tim -->
         <TextView
@@ -54,19 +67,20 @@
             android:textSize="20sp"
             android:lineSpacingExtra="4dp"
             android:textColor="#555"
-            android:gravity="center"
-            android:layout_marginBottom="24dp" />
-
-        <!-- Tombol Kembali -->
-        <Button
-            android:id="@+id/btn_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Back"
-            android:backgroundTint="#00796b"
-            android:textColor="#ffffff"
-            android:paddingVertical="10dp"
-            android:paddingHorizontal="20dp"
-            android:layout_gravity="center" />
+            android:gravity="center" />
     </LinearLayout>
-</ScrollView>
+
+    <!-- Tombol Kembali -->
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:backgroundTint="#00796b"
+        android:textColor="#ffffff"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="20dp"
+        android:layout_gravity="center" />
+
+</LinearLayout>
+    </ScrollView>

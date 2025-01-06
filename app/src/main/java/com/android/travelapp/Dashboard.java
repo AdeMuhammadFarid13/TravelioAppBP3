@@ -125,14 +125,14 @@ public class Dashboard extends AppCompatActivity {
         al_img_tour.add("https://www.rentalmobilbali.net/wp-content/uploads/2016/05/Pantai-Pandawa-Kutuh.jpg");
         al_name_tour.add("Pantai Pandawa");
         al_desc_tour.add("Pantai Pandawa berlokasi di Bali Selatan, tepatnya di Desa Kutuh, Kecamatan Kuta Selatan, Kabupaten Badung, Bali. Dahulu pantai ini dikenal sebagai Secret Beach karena lokasinya yang berada di belakang tebing-tebing tinggi ditumbuhi oleh semak belukar.");
-        al_price_tour.add(8000);
+        al_price_tour.add(250000);
         al_location.add("Pantai Pandawa, Bali");
 
         //Pantai Kuta
         al_img_tour.add("https://th.bing.com/th/id/OIP.286SjggiH_IRc3IH4tenEQHaEy?rs=1&pid=ImgDetMain");
         al_name_tour.add("Pantai Kuta");
         al_desc_tour.add("Pantai Kuta terletak di kelurahan Kuta, Kabupaten Badung, menjadi objek wisata alam pantai yang paling menarik dan indah di pulau Dewata Bali, tempat rekreasi alam pesisir ini melengkapi destinasi tour populer di kawasan pariwisata Bali Selatan yang memang populer dengan wilayah pesisir yang memiliki pasir putih.");
-        al_price_tour.add(5000);
+        al_price_tour.add(50000);
         al_location.add("Pantau Kuta, Bali");
 
         //Tanah Lot
@@ -154,7 +154,7 @@ public class Dashboard extends AppCompatActivity {
         al_img_tour.add("https://www.rentalmobilbali.net/wp-content/uploads/2013/11/tanjung-benoa-watersport.jpg");
         al_name_tour.add("Tanjung Benoa");
         al_desc_tour.add("Lokasi pantai Tanjung Benoa ada di kawasan Bali selatan, berdekatan dengan kawasan wisata Nusa Dua Bali. Alamatnya adalah Kelurahan Tanjung Benoa, Kecamatan Kuta Selatan, Kabupaten Badung.");
-        al_price_tour.add(5000);
+        al_price_tour.add(50000);
         al_location.add("Tanjung Benoa, Bali");
 
         //Pura Ulun Danu
@@ -175,21 +175,21 @@ public class Dashboard extends AppCompatActivity {
         al_img_tour.add("https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2020/06/Nusa-Dua-Bali.jpg");
         al_name_tour.add("Nusa Dua (Bali)");
         al_desc_tour.add("Lokasi Nusa Dua tempat wisata Bali, terletak di paling ujung bagian tenggara pulau Bali. Nusa Dua berjarak sekitar 40 kilometer dari kota Denpasar. Jika dari dari Bandara Internasional Ngurah Rai, jaraknya kurang lebih 8 kilometer, atau sekitar tiga puluh menit perjalanan dengan menggunakan mobil.");
-        al_price_tour.add(5000);
+        al_price_tour.add(50000);
         al_location.add("Nusa Dua, Bali");
 
         //Gunung Rinjani
         al_img_tour.add("https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2020/06/gunung-rinjani.jpg");
         al_name_tour.add("Gunung Rinjani");
         al_desc_tour.add("Gunung Rinjani adalah gunung yang berlokasi di Pulau Lombok, Nusa Tenggara Barat. Gunung yang merupakan gunung berapi kedua tertinggi di Indonesia dengan ketinggian 3.726 mdpl serta terletak pada lintang 8º25' LS dan 116º28' BT ini merupakan gunung favorit bagi pendaki Indonesia karena keindahan pemandangannya.");
-        al_price_tour.add(7500);
+        al_price_tour.add(75000);
         al_location.add("Gunung Rinjani, Lombok, NTB");
 
         //Danau Toba
         al_img_tour.add("https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2018/11/danau-toba.jpg");
         al_name_tour.add("Danau Toba");
         al_desc_tour.add("Alamat lokasi Danau Toba berada di Sumatera Utara, dan dikelilingi oleh 7 kabupaten (Simalungun, Toba Samosir, Tapanuli Utara, Humbang Hasundutan, Dairi, Karo, dan Samosir). Untuk mencapai kawasan ini sobat native harus masuk ke pintu masuknya terlebih dahulu yang berada di Medan. Menuju ke Kota Medan bisa menggunakan pesawat atau dengan menggunakan bus.");
-        al_price_tour.add(5000);
+        al_price_tour.add(50000);
         al_location.add("Danau Toba, Sumatra Utara");
 
         //Nusa Penida
@@ -231,7 +231,7 @@ public class Dashboard extends AppCompatActivity {
         al_img_tour.add("https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2018/11/pulau-komodo.jpg");
         al_name_tour.add("Pulau Komodo (NTT)");
         al_desc_tour.add("Pulau Komodo adalah sebuah pulau yang terletak di Kepulauan Nusa Tenggara, berada di sebelah timur Pulau Sumbawa, yang dipisahkan oleh Selat Sape. Pulau Komodo dikenal sebagai habitat asli hewan komodo.");
-        al_price_tour.add(5000);
+        al_price_tour.add(50000);
         al_location.add("Pulau Komodo, Nusa Tenggara Timur");
 
         //Candi Borobudur (Jawa Tengah)
@@ -252,14 +252,14 @@ public class Dashboard extends AppCompatActivity {
         al_img_tour.add("https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2018/11/danau-kelimutu.jpg");
         al_name_tour.add("Danau Kelimutu (NTT)");
         al_desc_tour.add("Tiwu atau Danau Kelimutu di bagi atas tiga bagian yang sesuai dengan warna – warna air danau yang terdapat didalamnya. Danau Kelimutu terdapat di provinsi? Tepatnya Pulau Flores Provinsi Nusa Tenggara Timur. Gunung berapi kelimutu dengan ketinggian 5.377 kaki tinggi menjulang berdiri di Desa Pemo Kabupaten Ende mempunyai kisah mistery yang akan dibahas dalam artikel ini.");
-        al_price_tour.add(5000);
+        al_price_tour.add(50000);
         al_location.add("Danau Kelimutu, NTT");
 
         //Kawah Ijen (Jawa Timur)
         al_img_tour.add("https://royaltour.web.id/wp-content/uploads/2017/10/paket-wisata-kawah-ijen-2-hari-1-malam.jpg");
         al_name_tour.add("Kawah Ijen (Jawa Timur)");
         al_desc_tour.add("Mengenai letak dan lokasi Kawah Ijen, ada yang menyebutnya Kawah Ijen Banyuwangi, ada pula yang menyebutnya Kawah Ijen Bondowoso, wajar saja, karna wisata gunung Ijen merupakan bagian dari Taman Nasional Baluran yang terletak diperbatasan 2 daerah, yaitu wilayah Kecamatan Licin, Kabupaten Banyuwangi dan Kecamatan Klobang, Kabupaten Bondowoso, jadi identik dengan wisata Banyuwangi dan Bondowoso.");
-        al_price_tour.add(7500);
+        al_price_tour.add(75000);
         al_location.add("Kawah Ijen, Jawa Timur");
 
         RecycleViewAdapterProcess();
@@ -323,26 +323,13 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void callCenter() {
-        // Membuat dialog untuk menampilkan nomor call center dan menambahkan opsi untuk menelepon
-        alertDialog = new AlertDialog.Builder(Dashboard.this)
-                .setIcon(android.R.drawable.ic_dialog_dialer)
-                .setTitle("Call Center")
-                .setMessage("\n081461152511")
-                .setNeutralButton("Call", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // Membuka aplikasi telepon dan memulai panggilan ke nomor yang disediakan
-                        Uri uri = Uri.parse("081461152511");
-                        Intent intent = new Intent(Intent.ACTION_DIAL, uri);
-                        intent.setData(Uri.fromParts("tel", String.valueOf(uri), null));
-
-                        if (intent.resolveActivity(getPackageManager()) != null) {
-                            startActivity(intent);
-                        }
-                    }
-                })
-                .show();
+        String phoneNumber = "081461152511"; // Nomor Telepon
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + phoneNumber));
+        startActivity(intent); // Membuka aplikasi telepon untuk memanggil
     }
+
+
 
     private void emailCenter() {
         // Membuat dialog untuk menampilkan alamat email dan menambahkan opsi untuk membuka aplikasi email
