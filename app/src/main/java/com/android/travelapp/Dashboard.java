@@ -308,9 +308,18 @@ public class Dashboard extends AppCompatActivity {
             case R.id.bar_logout:
                 getLogout(); // Memanggil metode getLogout() jika item logout dipilih
                 return true;
+            case R.id.bar_aboutus:
+                getAboutUs(); // Memanggil metode getAboutUs() jika item about us dipilih
+                return true;
             default:
                 return super.onOptionsItemSelected(item); // Menangani item lainnya
         }
+    }
+
+    private void getAboutUs() {
+        // Membuka Activity AboutUs untuk menampilkan informasi tentang aplikasi
+        Intent intent = new Intent(Dashboard.this, AboutUs.class);
+        startActivity(intent);
     }
 
     private void callCenter() {

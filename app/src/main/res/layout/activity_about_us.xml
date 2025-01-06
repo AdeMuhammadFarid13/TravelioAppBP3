@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#f9f9f9">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- Logo atau Gambar -->
+        <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_abtus"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Judul -->
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cheapsman_regular"
+            android:text="About Us"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="#333"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Deskripsi -->
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cheapsman_regular"
+            android:text="Travelio adalah aplikasi yang dirancang untuk membantu Anda menemukan tempat wisata terbaik, hotel terdekat, dan berbagai aktivitas menarik. Kami berkomitmen untuk memberikan pengalaman wisata yang mudah, cepat, dan menyenangkan bagi semua pengguna."
+            android:textSize="18sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="#555"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Info Tim -->
+        <TextView
+            android:id="@+id/tv_team"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cheapsman_regular"
+            android:text="Tim Pengembang :\n Ade Muhammad Farid (20220810023)\n Faiq Haritsah Adicandra (20220810100)\n Sigit Nur Alam (20220810115)"
+            android:textSize="20sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="#555"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Tombol Kembali -->
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:backgroundTint="#00796b"
+            android:textColor="#ffffff"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="20dp"
+            android:layout_gravity="center" />
+    </LinearLayout>
+</ScrollView>

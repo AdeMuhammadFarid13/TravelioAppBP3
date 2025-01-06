@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TravelApp">
         <activity
+            android:name=".AboutUs"
+            android:exported="false" />
+        <activity
             android:name=".Tickets"
             android:exported="false" />
         <activity

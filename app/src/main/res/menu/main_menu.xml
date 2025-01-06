@@ -17,4 +17,7 @@
     <item
         android:id="@+id/bar_logout"
         android:title="Logout" />
+    <item
+        android:id="@+id/bar_aboutus"
+        android:title="About Us" />
 </menu>
